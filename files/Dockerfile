@@ -8,7 +8,8 @@ RUN chmod -R +x /files/start.sh
 RUN mkdir -p $DASHBOARD_DIR
 RUN curl -Lo $DASHBOARD_DIR/dashboard.yaml "https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml"
 
-RUN mkdir -p $K8S_DIR/containerd/ && curl -Lo $K8S_DIR/containerd/ "https://raw.githubusercontent.com/containerd/containerd/main/containerd.service" 
+RUN mkdir -p $K8S_DIR/containerd/
+RUN curl -Lo $K8S_DIR/containerd/ "https://raw.githubusercontent.com/containerd/containerd/main/containerd.service" 
 
 FROM alpine
 COPY --from=builder /files /files
